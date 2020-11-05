@@ -1,7 +1,13 @@
 import React from 'react'
 import {Catygories, SortPopup, PizzasBlock} from '../components';
-
-function Home({ items }) {
+import { useSelector } from 'react-redux'
+function Home() {
+  const {items} = useSelector(({pizzas, filters}) => {
+    return {
+      items: pizzas.items, 
+      sortBy: filters.sortBy
+    }
+  }); 
     return (
         <div className="container">
         <div className="content__top">
@@ -21,7 +27,7 @@ function Home({ items }) {
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
         {
-          items.map((obj) => <PizzasBlock 
+          items && items.map((obj) => <PizzasBlock 
           key={obj.id} 
           {...obj}
           />)
