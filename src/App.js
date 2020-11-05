@@ -11,8 +11,8 @@ function App () {
   
 
   React.useEffect(() => {
-    Axios.get('http://localhost:3000/db.json').then(({data}) => {
-     dispath(setPizzas(data.pizzas)); 
+    Axios.get('http://localhost:3001/pizzas').then(({data}) => {
+     dispath(setPizzas(data)); 
     });
   }, []); 
 
